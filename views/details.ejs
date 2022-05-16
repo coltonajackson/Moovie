@@ -1,0 +1,49 @@
+<div class="container max-width-80 my-5 pb-2">
+  <div class="d-block justify-content-center text-center bd-highlight">
+    <h1 class="movie-title display-3"><%= movie.title %></h1>
+    <div class="d-block d-lg-none mt-3">
+      <div class="mx-auto" id="detail-img-rating">
+        <div class="image-container bg-light rounded">
+          <img src="<%= movie.imgPath %>" alt="<%= movie.title %>" class="image rounded">
+        </div>
+        <div class="d-flex align-items-center justify-content-center mt-2 stars-div">
+          <div class="rating pt-1"><%= movie.rating %></div>
+          <div class="stars-outer">
+            <div class="stars-inner"></div>
+          </div>
+        </div>
+      </div>
+      <div class="mx-auto text-light mt-2 mb-5" id="movie-details">
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia quidem alias quasi 
+          aperiam voluptatibus nobis natus porro eum quo nesciunt nemo, laudantium, totam 
+          consequatur vero obcaecati facere pariatur soluta in eveniet? Laudantium, blanditiis 
+          voluptate nostrum molestias, praesentium labore porro eius, consequatur rerum adipisci 
+          molestiae error! Qui, quam nemo. Fugit, quo.
+        </p>
+      </div>
+    </div>
+    <div class="d-none d-lg-flex justify-content-center mt-5">
+      <div class="col-6 text-center" id="detail-img-rating">
+        <div class="image-container bg-light rounded">
+          <img src="<%= movie.imgPath %>" alt="<%= movie.title %>" class="image rounded">
+        </div>
+        <div class="d-flex align-items-center justify-content-center mt-3 stars-div">
+          <div class="rating pt-1"><%= movie.rating.toFixed(1) %></div>
+          <div class="stars-outer">
+            <div class="stars-inner"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 ms-5 text-light" id="movie-details">
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia quidem alias quasi 
+          aperiam voluptatibus nobis natus porro eum quo nesciunt nemo, laudantium, totam 
+          consequatur vero obcaecati facere pariatur soluta in eveniet? Laudantium, blanditiis 
+          voluptate nostrum molestias, praesentium labore porro eius, consequatur rerum adipisci 
+          molestiae error! Qui, quam nemo. Fugit, quo.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

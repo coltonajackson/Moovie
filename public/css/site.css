@@ -1,0 +1,254 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-image: url("../img/background/dark-sky-background.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+h1 {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.btn:focus, .btn:active {
+  outline: none !important;
+  box-shadow: none;
+}
+
+.max-width-95 {
+  max-width: 95%;
+}
+.max-width-90 {
+  max-width: 90%;
+}
+.max-width-80 {
+  max-width: 80%;
+}
+.w-90 {
+  width: 90%;
+}
+
+#movie-index {
+  margin-left: -25px;
+}
+
+#moovie-title-nav {
+  height: min-content;
+  width: 100%;
+}
+#moovie-title-nav-text {
+  width: min-content;
+}
+.nav-btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.open-btn {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 60%;
+  max-width: 600px;
+  min-width: 400px;
+  transition-delay: 0.1s;
+  overflow: hidden;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1;
+}
+#moovie-home-container {
+  height: min-content;
+  width: 100%;
+}
+#moovie-home {
+  transition: transform 0.1s ease-in-out;
+}
+#moovie-home:hover {
+  transform: scale(1.05);
+}
+.nav.visible {
+  transform: translateX(0);
+  transition-delay: 0.1s;
+}
+.close-btn {
+  opacity: 0.6;
+  position: absolute;
+  top: 40px;
+  right: 30px;
+  color: #fff;
+}
+#nav-list {
+  position: fixed;
+  margin-top: 150px;
+}
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+.list li {
+  margin: 20px 0;
+}
+.list li a {
+  font-size: 24px;
+  text-decoration: none;
+}
+.list li a, #moovie-home-text {
+  text-transform: uppercase;
+}
+.list ul {
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.nav-link {
+  color: #fff;
+}
+.nav-link:hover, .nav-link.active:hover {
+  color: #ddd;
+}
+.nav-item .nav-link {
+  width: max-content;
+}
+.nav-pills .nav-link.active {
+  background-color: #333;
+}
+
+.movie-link, .image-container {
+  width: 400px;
+  height: 600px;
+}
+#detail-img-rating {
+  width: 400px;
+}
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image-container .image {
+  object-fit: cover;
+  object-position: center;
+  background-size: cover;
+}
+.image {
+  width: 99%;
+  height: 99%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.image, .overlay {
+  transition: all 0.3s ease;
+}
+.overlay {
+  margin-left: -10px;
+  position: absolute;
+  opacity: 0;
+  background-color: #333;
+}
+
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+}
+.stars-outer, .rating {
+  font-size: 40px;
+}
+.stars-outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: rgb(255, 205,60);
+}
+
+.image-container:hover .overlay, .image-container:hover .image {
+  opacity: 1;
+  transform: scale(1.05);
+}
+.overlay-fade {
+  height: inherit;
+  text-align: center;
+  display: table;
+  width: inherit;
+  top: 0;
+  background-color: rgba(0,0,0,0.8);
+}
+.overlay .overlay-text, .movie-title, .rating {
+  color: #fff;
+  padding: 0 10px;
+}
+
+.footer-nav {
+  height: 80px;
+}
+.footer-nav a {
+  color: rgb(179, 174, 185);
+  font-size: 40px;
+}
+.footer-nav a:hover {
+  color: rgb(250, 250, 250);
+  transition: all 0.3s ease;
+}
+
+.nav, .footer-nav {
+  background-color: rgb(7, 12, 38);
+}
+#moovie-home:hover h1, .menu-item {
+  color: rgb(7, 12, 38);
+}
+
+#movie-details {
+  max-width: 500px;
+}
+
+@media (max-height: 1050px) {
+  .nav {
+    max-width: 400px;
+    min-width: 300px;
+  }
+  #moovie-home-container {
+    padding-top: 10px;
+  }
+  #moovie-home {
+    align-items: center;
+  }
+  #moovie-home-text {
+    font-size: 40px;
+    padding-top: 0.25rem!important
+  }
+  .movie-link, .image-container {
+    width: 300px;
+    height: 400px;
+  }
+  #detail-img-rating {
+    width: 300px;
+  }
+  .overlay-text, .rating, .stars-outer {
+    font-size: 25px;
+  }
+}
