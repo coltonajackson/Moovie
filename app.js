@@ -1,33 +1,40 @@
+// Import Environment Variables
+require('dotenv').config();
 // Express Imports
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 // NodeJS Imports
 const path = require('path');
-const fs = require('fs');
-const os = require('os');
+// NPM Package Imports
+const axios = require('axios');
 // Custom Module Imports
 const Logger = require('./modules/logger');
 const Movie = require('./modules/movie');
 // Declare objects from imported classes
 const logger = new Logger();
-// Request data from JSON
-const movies_data = require('./data/movies.json');
 
-// Set Logger to trigger on 'message' keyword
-logger.on('message', (data) => console.log('Called Listener', data));
-
-// Obtain list of movies from JSON
-var movies_array = [];
-movies_data.forEach(movie => {
-  var mov = new Movie(movie['id'], movie['title'], movie['imgPath'], movie['rating'])
-  movies_array.push(mov)
-});
-
-/*movies_array.forEach((movie, idx) => {
-  console.log(idx, movie);
-});*/
+// Obtain list of movies from Django REST API
+let getUpdatedMovies = async () => {
+  // Request data from API
+  let api = axios.create({
+    baseURL: 'http://localhost:8000/api',
+    auth: {
+      username: process.env.API_USERNAME,
+      password: process.env.API_PASSWORD
+    }
+  });
+  return api.get('/movies').then(res => { return res.data });
+}
 
 const app = express();
+
+// Set Auth Token from API Token Generator
+const AUTH_TOKEN = process.env.API_KEY;
+
+// Set Logger to trigger on 'message' keyword
+logger.on('data', (data) => console.log('Called Listener', data));
+
+// Set port to Environment Port or 5000
 const port = process.env.PORT || 5000;
 
 // Set Templating Engine
@@ -36,32 +43,50 @@ app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
 
 // Set routing for static pages to main root
-const STATIC_ROOT = path.join(__dirname, 'public');
-app.use(express.static(STATIC_ROOT));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'data')));
 
 // Routing to pages
 app.get('', (req, res) => {
-  let options = {
-    title: 'Home Page',
-    movies: movies_array
-  };
-  res.render('index', options);
+  getUpdatedMovies().then(data => {
+    let movies_data = data['results'];
+    let movies_array = new Array();
+    const movies = Object.entries(movies_data);
+    for (const [key, value] of movies) {
+      movies_array.push(new Movie(value.url, value.id, value.title, value.imgPath, value.rating));
+    }
+    let options = {
+      title: 'Home Page',
+      movies: movies_array
+    };
+    res.render('index', options);
+  });
 });
 
-app.use('/details', express.static(STATIC_ROOT));
+app.use('/details', express.static(path.join(__dirname, 'public')));
+app.use('/details', express.static(path.join(__dirname, 'data')));
 app.get('/details/:id', (req, res) => {
-  let options = {
-    root: path.join(__dirname, 'public'),
-    title: 'Details',
-    movie: movies_array[req.params.id - 1]
-  }
-  res.render('details', options);
+  getUpdatedMovies().then(data => {
+    let movies_data = data['results'];
+    let movies_array = new Array();
+    const movies = Object.entries(movies_data);
+    for (const [key, value] of movies) {
+      movies_array.push(new Movie(value.url, value.id, value.title, value.imgPath, value.rating));
+    }
+    let mov = movies_array.find(m => m.id === parseInt(req.params.id));
+    if (mov !== undefined) {
+      let options = {
+        root: path.join(__dirname, 'public'),
+        title: 'Details',
+        movie: mov
+      };
+      res.render('details', options);
+    } else {
+      res.type('html').render('error', { title: 'Error', code: '404', message: 'File not found' });
+    }
+  });
 });
 
 app.listen(port, () => {
   logger.log(`App listening on port ${port}`);
-  /*setInterval(() => {
-    var factor = Math.pow(1024, 3);
-    logger.log(`Using ${((os.totalmem() - os.freemem()) / factor).toFixed(2)} GB out of ${(os.totalmem() / factor).toFixed(2)} GB.`)
-  }, 1000);*/
 });

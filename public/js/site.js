@@ -37,10 +37,3 @@ starsOuterDivs.forEach(starsOuterDiv => {
     const starPercRounded = `${Math.round(starPerc)}%`;
     starsOuterDiv.firstChild.nextSibling.style.width = starPercRounded;
 });
-
-/*for (let i = 0; i < starDivLength; i++) {
-    let starCount = parseFloat($(`#star-rating-${i}`).html());
-    const starPerc = starCount * 20;
-    const starPercRounded = `${Math.round(starPerc)}%`;
-    $(`#stars-${i}`).width(starPercRounded);
-}*/

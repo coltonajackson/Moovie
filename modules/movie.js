@@ -1,5 +1,6 @@
 class Movie {
-    constructor(id, title, imgPath, rating) {
+    constructor(url, id, title, imgPath, rating) {
+        this.url = url;
         this.id = id;
         this.title = title;
         this.imgPath = imgPath;

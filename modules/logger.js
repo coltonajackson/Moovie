@@ -2,8 +2,8 @@ const EventEmitter = require('events');
 const uuid = require('uuid');
 
 class Logger extends EventEmitter {
-    log(msg) {
-        this.emit('message', { id: uuid.v4(), msg })
+    log(data) {
+        this.emit('data', { id: uuid.v4(), data })
     }
 }
 
