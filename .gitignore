@@ -203,8 +203,6 @@ db.sqlite3
 # Data files/folders
 *.db
 db/
-*.json
-json/
 
 # Python virtual environment
 venv/
