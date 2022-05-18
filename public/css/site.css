@@ -226,7 +226,14 @@ h1 {
   max-width: 500px;
 }
 
-@media (max-height: 1050px) {
+@media (min-width: 0px) and (max-width: 992px) {
+  body {
+    background-image: none;
+    background-color: rgb(7, 12, 38);
+  }
+}
+
+@media (min-height: 0px) and (max-height: 1050px) {
   .nav {
     max-width: 400px;
     min-width: 300px;
