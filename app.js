@@ -1,5 +1,5 @@
 // Import Environment Variables
-require('dotenv').config();
+// require('dotenv').config(); # No need since we're using dotenv-webpack in webpack.config.js
 // Express Imports
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
@@ -7,6 +7,7 @@ const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 // NPM Package Imports
 const axios = require('axios');
+const favicon = require('serve-favicon');
 // Custom Module Imports
 const Logger = require('./modules/logger');
 const Movie = require('./modules/movie');
@@ -14,16 +15,16 @@ const Movie = require('./modules/movie');
 const logger = new Logger();
 
 // Obtain list of movies from Django REST API
-let getUpdatedMoviesAPI = async () => {
-  // Request data from API
-  let api = axios.create({
-    baseURL: 'http://localhost:8000/api',
-    auth: {
-      username: process.env.API_USERNAME,
-      password: process.env.API_PASSWORD
-    }
-  });
-}
+// let getUpdatedMoviesAPI = async () => {
+//   // Request data from API
+//   let api = axios.create({
+//     baseURL: '/api',
+//     auth: {
+//       username: process.env.API_USERNAME,
+//       password: process.env.API_PASSWORD
+//     }
+//   });
+// }
 
 let getUpdatedMoviesJSON = () => {
   return require('./data/json/movies.json');
@@ -32,7 +33,9 @@ let getUpdatedMoviesJSON = () => {
 // Set Auth Token from API Token Generator
 // const AUTH_TOKEN = process.env.API_KEY;
 
+// Include Express app and include favicon with path
 const app = express();
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 // Set Logger to trigger on 'message' keyword
 logger.on('data', (data) => console.log('Called Listener', data));
@@ -53,17 +56,17 @@ app.use(express.static(path.join(__dirname, 'data')));
 app.get('', (req, res) => {
   // API Get Request
   // getUpdatedMoviesAPI().then(data => {
-  //   let movies_data = data['results'];
-  //   let movies_array = new Array();
-  //   const movies = Object.entries(movies_data);
-  //   for (const [key, value] of movies) {
-  //     movies_array.push(new Movie(value.id, value.title, value.imgPath, value.rating));
-  //   }
-  //   let options = {
-  //     title: 'Home Page',
-  //     movies: movies_array
-  //   };
-  //   res.render('index', options);
+    // let movies_data = data['results'];
+    // let movies_array = new Array();
+    // const movies = Object.entries(movies_data);
+    // for (const [key, value] of movies) {
+    //   movies_array.push(new Movie(value.id, value.title, value.imgPath, value.rating));
+    // }
+    // let options = {
+    //   title: 'Home Page',
+    //   movies: movies_array
+    // };
+    // res.render('index', options);
   // });
   // JSON Data File Request
   let movies_data = getUpdatedMoviesJSON();

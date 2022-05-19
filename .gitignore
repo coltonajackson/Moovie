@@ -204,9 +204,10 @@ db.sqlite3
 *.db
 db/
 
-# Python virtual environment
-venv/
-
 # Test files and directories
 test*
 test/
+
+# Backup files and directories
+*.bak
+*.bak/
