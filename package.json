@@ -7,9 +7,7 @@
     "node": "16.x"
   },
   "scripts": {
-    "start": "node app.js",
-    "build": "webpack -w",
-    "dev": "webpack --mode development --watch"
+    "start": "node app.js"
   },
   "author": {
     "name": "Colton Jackson",
