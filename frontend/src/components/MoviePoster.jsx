@@ -15,11 +15,11 @@ function MoviePoster({isIndexPage, img, movie}) {
         ? 'image-container-mobile' : 'image-container', 'bg-light', 'rounded')} id={movie.id}>
         <img className={classNames('image', 'rounded')} src={img.substring(1)} alt={movie.title} />
         <div className={classNames('overlay', 'overlay-fade', 'd-flex', 'align-items-center', 
-          'row', 'rounded', width <= widthBreakpoint ? 'mt-auto' : '')}>
+          'row', 'rounded', width <= widthBreakpoint && 'mt-auto')}>
           <div className='col'>
             <h1 className={classNames('overlay-text', 'movie-title')}>{movie.title}</h1>
-            <div className={classNames('d-flex', 'align-items-center', 'justify-content-center', 
-              'mt-2', 'stars-div')}>
+            <div className={classNames('d-flex', 'align-items-center', 'justify-content-center', 'stars-div',
+              (width > widthBreakpoint) && 'mt-2')}>
               <div className={classNames('rating')}>{movie.rating.toFixed(1)}</div>
               <div className={classNames('stars-outer')}>
                 <div className={classNames('stars-inner')}

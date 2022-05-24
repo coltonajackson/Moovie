@@ -33,10 +33,6 @@ h1 {
   width: 90%!important;
 }
 
-#movie-index {
-  margin-left: 15px;
-}
-
 #moovie-title-nav {
   height: min-content;
   width: 100%;
@@ -209,6 +205,9 @@ h1 {
   color: #fff;
   padding: 0 10px;
 }
+.movie-title {
+  margin-bottom: 0;
+}
 
 .footer-nav {
   height: 80px;
@@ -240,10 +239,79 @@ h1 {
   }
 }
 
+@media (min-width: 351px) and (max-width: 500px) {
+  .nav {
+    width: 250px!important;
+    width: 300px!important;
+  }
+  .movie-link, .image-container, .image-container-mobile {
+    width: 250px!important;
+    height: 300px!important;
+  }
+  #detail-img-rating {
+    width: 250px!important;
+  }
+  .overlay-text, .rating, .stars-outer {
+    font-size: 20px!important;
+  }
+}
+
+@media (min-width: 251px) and (max-width: 500px) {
+  .footer-nav {
+    height: 60px!important;
+  }
+  .footer-nav a {
+    font-size: 30px!important;
+  }
+}
+
+@media (min-width: 251px) and (max-width: 350px) {
+  .nav {
+    width: 150px!important;
+    width: 200px!important;
+  }
+  .movie-link, .image-container, .image-container-mobile {
+    width: 150px!important;
+    height: 200px!important;
+  }
+  #detail-img-rating {
+    width: 150px!important;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 350px) {
+  .image-container-mobile .overlay {
+    opacity: 0!important;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 250px) {
+  .nav {
+    width: 100px!important;
+    width: 150px!important;
+  }
+  .movie-link, .image-container, .image-container-mobile {
+    width: 100px!important;
+    height: 150px!important;
+  }
+  #detail-img-rating {
+    width: 100px!important;
+  }
+  .overlay-text, .rating, .stars-outer {
+    font-size: 20px!important;
+  }
+  .footer-nav {
+    height: 40px!important;
+  }
+  .footer-nav a {
+    font-size: 20px!important;
+  }
+}
+
 @media (min-height: 0px) and (max-height: 1050px) {
   .nav {
-    max-width: 400px;
-    min-width: 300px;
+    width: 400px;
+    width: 300px;
   }
   #moovie-home-container {
     padding-top: 10px;

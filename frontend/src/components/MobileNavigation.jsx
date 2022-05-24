@@ -8,7 +8,9 @@ import classNames from 'classnames';
 import UseViewport from '../scripts/UseViewport';
 
 function MobileNavigation() {
-  const { height } = UseViewport();
+  const { width, height } = UseViewport();
+  const midWidthBreakpoint = 500;
+  const smallWidthBreakpoint = 350;
   const heightBreakpoint = 1050;
 
   return (
@@ -17,16 +19,24 @@ function MobileNavigation() {
        style={{ fontSize: height > heightBreakpoint ? '40px' : '30px', 
         height: height > heightBreakpoint ? '80px' : '60px' }}>
       <div>
-        <Link className={classNames('nav-icon', 'mx-4', 'h-100', 'w-25')} to='/'>
+        <Link className={classNames('nav-icon', 'h-100', 'w-25', 
+          ((width > smallWidthBreakpoint && width <= midWidthBreakpoint) && 'mx-3') 
+          || ((width > midWidthBreakpoint) && 'mx-4') || 'mx-2')} to='/'>
           <i className={classNames('fa-solid', 'fa-house')}></i>
         </Link>
-        <Link className={classNames('nav-icon', 'mx-4', 'h-100', 'w-25')} to='#'>
+        <Link className={classNames('nav-icon', 'h-100', 'w-25',
+          ((width > smallWidthBreakpoint && width <= midWidthBreakpoint) && 'mx-3') 
+          || ((width > midWidthBreakpoint) && 'mx-4') || 'mx-2')} to='#'>
           <i className={classNames('fa-solid', 'fa-clapperboard')}></i>
         </Link>
-        <Link className={classNames('nav-icon', 'mx-4', 'h-100', 'w-25')} to='#'>
+        <Link className={classNames('nav-icon', 'h-100', 'w-25',
+          ((width > smallWidthBreakpoint && width <= midWidthBreakpoint) && 'mx-3') 
+          || ((width > midWidthBreakpoint) && 'mx-4') || 'mx-2')} to='#'>
           <i className={classNames('fa-solid', 'fa-star')}></i>
         </Link>
-        <Link className={classNames('nav-icon', 'mx-4', 'h-100', 'w-25')} to='#'>
+        <Link className={classNames('nav-icon', 'h-100', 'w-25',
+          ((width > smallWidthBreakpoint && width <= midWidthBreakpoint) && 'mx-3') 
+          || ((width > midWidthBreakpoint) && 'mx-4') || 'mx-2')} to='#'>
           <i className={classNames('fa-solid', 'fa-user')}></i>
         </Link>
       </div>
