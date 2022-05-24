@@ -145,7 +145,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
-build/
+# build/ (Disable for Heroku)
 develop-eggs/
 dist/
 downloads/
