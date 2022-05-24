@@ -198,11 +198,13 @@ migrations/
 .env
 db.sqlite3
 
-# Custom .gitignore
+## Custom .gitignore
 
 # Data files/folders
-*.db
-db/
+*.json
+json/
+img/
+vid/
 
 # Test files and directories
 test*
