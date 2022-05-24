@@ -277,6 +277,9 @@ h1 {
   #detail-img-rating {
     width: 150px!important;
   }
+  .overlay-text, .rating, .stars-outer {
+    font-size: 15px!important;
+  }
 }
 
 @media (min-width: 0px) and (max-width: 350px) {
@@ -298,7 +301,7 @@ h1 {
     width: 100px!important;
   }
   .overlay-text, .rating, .stars-outer {
-    font-size: 20px!important;
+    font-size: 10px!important;
   }
   .footer-nav {
     height: 40px!important;
