@@ -1,6 +1,10 @@
 # Moovie
 
 Moovie - Project to Provide Unbiased Ratings on Movies
+Built with the following frameworks
+
+1. React - Front-End
+2. Django/REST API - Back-End
 
 ---
 
@@ -32,10 +36,22 @@ cd frontend
 npm install
 ```
 
-### Run project from root with python manage.py runserver
+### Run build for frontend
+
+```bash
+npm run build
+```
+
+### Change to root directory and collect staticfiles for Django app
 
 ```bash
 cd ..
+python manage.py collectstatic
+```
+
+### Run project from root with python manage.py runserver
+
+```bash
 python manage.py runserver
 ```
 

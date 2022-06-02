@@ -227,6 +227,8 @@ test/
 
 # production
 *build/
+static/
+static/*
 
 # misc
 *.DS_Store
